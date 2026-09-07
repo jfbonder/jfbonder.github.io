@@ -171,8 +171,49 @@
       filter: grayscale(8%);
     }
 
-    .scholar-links {
+    .scholar-stats {
+      display: flex;
+      align-items: center;
+      gap: 0;
       margin-top: 1.25rem;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      max-width: 360px;
+      overflow: hidden;
+    }
+
+    .scholar-stat-block {
+      display: flex;
+      flex-direction: column;
+      padding: 0.6rem 1rem;
+      text-decoration: none;
+      transition: background 0.12s;
+      flex: 1;
+    }
+    .scholar-stat-block:hover { background: var(--accent-pale); }
+
+    .scholar-stat-num {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .scholar-stat-label {
+      font-size: 0.65rem;
+      color: var(--ink-light);
+      margin-top: 0.1rem;
+    }
+
+    .scholar-stat-divider {
+      width: 1px;
+      align-self: stretch;
+      background: var(--rule);
+      flex-shrink: 0;
+    }
+
+    .scholar-links {
+      margin-top: 0.75rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem 1rem;
@@ -235,6 +276,25 @@
     .pub-link:hover { text-decoration: underline; }
 
     .pub-venue { color: var(--ink-mid); }
+
+    .pub-fulllist-btn {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--white);
+      background: var(--accent);
+      padding: 0.55rem 1.1rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.12s;
+    }
+    .pub-fulllist-btn:hover { opacity: 0.85; }
+    .pub-fulllist-btn--secondary {
+      background: none;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .pub-fulllist-btn--secondary:hover { background: var(--accent-pale); opacity: 1; }
 
     /* ── Teaching ── */
     .course-current {
@@ -479,7 +539,7 @@
     <a href="#home" onclick="this.closest('nav').classList.remove('open')">Home</a>
     <a href="#publications" onclick="this.closest('nav').classList.remove('open')">Publications</a>
     <a href="#teaching" onclick="this.closest('nav').classList.remove('open')">Teaching</a>
-    <a href="#research" onclick="this.closest('nav').classList.remove('open')">Research</a>
+    <a href="#research" onclick="this.closest('nav').classList.remove('open')">Grants & Collaborators</a>
     <a href="#students" onclick="this.closest('nav').classList.remove('open')">Students</a>
     <a href="#contact" onclick="this.closest('nav').classList.remove('open')">Contact</a>
   </nav>
@@ -499,7 +559,7 @@
       <a href="#home" class="active">Home</a>
       <a href="#publications">Publications</a>
       <a href="#teaching">Teaching</a>
-      <a href="#research">Research</a>
+      <a href="#research">Grants & Collaborators</a>
       <a href="#students">Students</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -534,6 +594,17 @@
           <p>
             My current research focuses on nonlinear and nonlocal elliptic-type equations, including problems in Orlicz–Sobolev spaces, fractional operators, shape optimization, and eigenvalue problems for quasilinear operators.
           </p>
+          <div class="scholar-stats">
+            <a href="https://scholar.google.com.ar/citations?hl=es&user=N_R6gSgAAAAJ" target="_blank" class="scholar-stat-block">
+              <span class="scholar-stat-num">2,091</span>
+              <span class="scholar-stat-label">citations</span>
+            </a>
+            <div class="scholar-stat-divider"></div>
+            <a href="https://scholar.google.com.ar/citations?hl=es&user=N_R6gSgAAAAJ" target="_blank" class="scholar-stat-block">
+              <span class="scholar-stat-num">Google Scholar</span>
+              <span class="scholar-stat-label">PDEs · Calculus of Variations · Analysis</span>
+            </a>
+          </div>
           <div class="scholar-links">
             <a href="https://scholar.google.com.ar/citations?hl=es&user=N_R6gSgAAAAJ" target="_blank">Google Scholar</a>
             <a href="https://arxiv.org/search/?searchtype=author&query=Bonder%2C+J+F" target="_blank">arXiv</a>
@@ -542,11 +613,7 @@
             <a href="https://zbmath.org/authors/fernandez-bonder.julian" target="_blank">zbMATH</a>
           </div>
         </div>
-        <!-- Replace the src below with a local file (e.g., photo.jpg) if the CDN link breaks -->
-        <img class="bio-photo"
-          src="https://lh3.googleusercontent.com/sitesv/AG8ngQXU1qJvqdVsUiP4V86tDWkkix-LMDCZMNoZwEGT5OP2nDlMS77An0mZuE-9UHBjHcZXe_6NzXsFpKU2dqOlJdBsTVmJ4yE9oYMwGGdbjvfuShqtYV62msvrSUBu1MgOcNDOU5G9MVH8e13wEG5UPEgoqXEVXGV1nwK9rkxQ0_M3Khr06jATYMopccKdGDSD09JQPydRS-X2cY07OUwDWRMeReErZ9Fpsg8L9a4=w400"
-          alt="Julián Fernández Bonder"
-          onerror="this.style.display='none'">
+        <img class="bio-photo" src="photo.jpg" alt="Julián Fernández Bonder">
       </div>
     </section>
 
@@ -608,10 +675,21 @@
         </ol>
       </div>
 
-      <!-- Published papers -->
+      <!-- Full list link -->
       <div class="pub-group">
         <div class="pub-group-title">Published papers</div>
-        <ol class="pub-list" reversed start="92">
+        <p style="font-size:0.85rem; color:var(--ink-mid); line-height:1.7; margin-bottom:1rem;">
+          92 published papers in journals including <em>J. Functional Analysis</em>, <em>SIAM J. Math. Anal.</em>, <em>J. Differential Equations</em>, <em>Mathematische Annalen</em>, <em>Proc. Amer. Math. Soc.</em>, and others.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://scholar.google.com.ar/citations?hl=es&user=N_R6gSgAAAAJ" target="_blank" class="pub-fulllist-btn">Complete list on Google Scholar</a>
+          <a href="https://arxiv.org/search/?searchtype=author&query=Bonder%2C+J+F" target="_blank" class="pub-fulllist-btn pub-fulllist-btn--secondary">arXiv preprints</a>
+        </div>
+      </div>
+
+      <!-- Proceedings + notes hidden in a "full" block that's actually removed -->
+      <!-- START HIDDEN PUBLISHED PAPERS -->
+      <div style="display:none"><ol class="pub-list" reversed start="92">
           <li class="pub-item"><span class="pub-num">92</span><span class="pub-body">P. Groisman, C. De Vita, J. Fernández Bonder and Y. Zhang. The size of the sync basin resolved. <em>Phys. Rev. E</em> 112, L052201 (2025). <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Basin_scaling.pdf">pdf</a></span></li>
           <li class="pub-item"><span class="pub-num">91</span><span class="pub-body">I. Ceresa-Dussel, J. Fernández Bonder, N. Saintier and A.M. Salort. Fractional Lane-Emden Hamiltonian systems. <em>J. Math. Anal. Appl.</em>, 552 (2025), 129813. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/CBSS.pdf">pdf</a></span></li>
           <li class="pub-item"><span class="pub-num">90</span><span class="pub-body">J. Fernández Bonder and J.F. Spedaletti. Ljusternik–Schnirelmann eigenvalues for the fractional <em>m</em>-Laplacian without the Δ₂ condition. <em>Commun. Pure Appl. Anal.</em> 24 (2025), no. 6, 1094–1117. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Ljusternik.pdf">pdf</a></span></li>
@@ -707,6 +785,8 @@
         </ol>
       </div>
 
+      </ol></div><!-- END HIDDEN PUBLISHED PAPERS -->
+
       <!-- Proceedings -->
       <div class="pub-group">
         <div class="pub-group-title">Proceedings</div>
@@ -751,13 +831,13 @@
 
       <div class="course-past-title">Past courses</div>
       <ul class="course-list">
-        <li class="course-item"><span class="course-name">Introduction to Continuous Modeling <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2026/introduccion_al_modelado_continuo" target="_blank">web</a></span><span class="course-period">1st sem 2026</span></li>
-        <li class="course-item"><span class="course-name">Partial Differential Equations <a href="https://cms.dm.uba.ar/academico/materias/2docuat2025/ecuaciones_diferenciales/" target="_blank">web</a></span><span class="course-period">2nd sem 2025</span></li>
-        <li class="course-item"><span class="course-name">Mathematical Foundations of Deep Learning <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2025/fundamentos_matematicos_%20del_%20aprendizaje_produndo/" target="_blank">web</a></span><span class="course-period">1st sem 2025</span></li>
-        <li class="course-item"><span class="course-name">Analysis 2 <a href="https://cms.dm.uba.ar/academico/materias/2docuat2024/analisis_II/" target="_blank">web</a></span><span class="course-period">2nd sem 2024</span></li>
+        <li class="course-item"><span class="course-name">Introduction to Continuous Modeling <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2026/introduccion_al_modelado_continuo" target="_blank">web</a> · <a href="https://campus.exactas.uba.ar/course/view.php?id=922&section=0" target="_blank">campus</a></span><span class="course-period">1st sem 2026</span></li>
+        <li class="course-item"><span class="course-name">Partial Differential Equations <a href="https://cms.dm.uba.ar/academico/materias/2docuat2025/ecuaciones_diferenciales/" target="_blank">web</a> · <a href="https://campus.exactas.uba.ar/course/view.php?id=579&section=0" target="_blank">campus</a></span><span class="course-period">2nd sem 2025</span></li>
+        <li class="course-item"><span class="course-name">Mathematical Foundations of Deep Learning <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2025/fundamentos_matematicos_%20del_%20aprendizaje_produndo/" target="_blank">web</a> · <a href="https://campus.exactas.uba.ar/course/view.php?id=123" target="_blank">campus</a></span><span class="course-period">1st sem 2025</span></li>
+        <li class="course-item"><span class="course-name">Analysis 2 <a href="https://cms.dm.uba.ar/academico/materias/2docuat2024/analisis_II/" target="_blank">web</a> · <a href="https://campus12-24.exactas.uba.ar/course/view.php?id=4538" target="_blank">campus</a></span><span class="course-period">2nd sem 2024</span></li>
         <li class="course-item"><span class="course-name">Real Analysis <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2024/analisis_real/" target="_blank">web</a></span><span class="course-period">1st sem 2024</span></li>
-        <li class="course-item"><span class="course-name">Introduction to Continuous Modeling</span><span class="course-period">2nd sem 2023</span></li>
-        <li class="course-item"><span class="course-name">Nonlinear PDEs</span><span class="course-period">1st sem 2023</span></li>
+        <li class="course-item"><span class="course-name">Introduction to Continuous Modeling <a href="https://cms.dm.uba.ar/academico/materias/2docuat2023/introduccion_al_modelado_continuo/" target="_blank">web</a></span><span class="course-period">2nd sem 2023</span></li>
+        <li class="course-item"><span class="course-name">Nonlinear PDEs <a href="https://cms.dm.uba.ar/academico/materias/1ercuat2023/ecuaciones_diferenciales_no_lienales/" target="_blank">web</a></span><span class="course-period">1st sem 2023</span></li>
         <li class="course-item"><span class="course-name"><a href="https://mate.dm.uba.ar/~jfbonder/teaching.html" target="_blank" style="color:var(--ink-light)">Older courses →</a></span><span class="course-period"></span></li>
       </ul>
 
@@ -772,11 +852,7 @@
 
     <!-- Research -->
     <section class="section" id="research">
-      <h2 class="section-title">Research</h2>
-
-      <p class="research-intro">
-        My work centers on nonlinear and nonlocal elliptic equations. Current topics include problems in Orlicz–Sobolev and fractional Orlicz–Sobolev spaces, eigenvalue problems for quasilinear operators, shape optimization, free boundary problems, and the mathematical foundations of machine learning (PINNs, deep learning).
-      </p>
+      <h2 class="section-title">Grants &amp; Collaborators</h2>
 
       <div class="grants-title">Grants (selected)</div>
       <ul class="grant-list">
