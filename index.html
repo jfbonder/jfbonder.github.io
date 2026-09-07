@@ -105,7 +105,19 @@
       margin-left: var(--sidebar-w);
       padding: 4.5rem 5rem 7rem 4.5rem;
       max-width: calc(var(--sidebar-w) + 740px);
+      position: relative;
     }
+
+    .math-bg-full {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .math-bg-full + * { position: relative; z-index: 1; }
+    .section { position: relative; z-index: 1; }
 
     /* ── Sections ── */
     .section { margin-bottom: 5rem; }
@@ -574,28 +586,38 @@
   <!-- Main -->
   <main>
 
-    <!-- Home / Bio -->
+    <div class="math-bg-full" aria-hidden="true">
+    <svg width="100%" height="100%" style="position:absolute;top:0;left:0" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="mathpat" x="0" y="0" width="620" height="420" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke="#191919" stroke-width="0.85" opacity="0.088">
+            <ellipse cx="500" cy="210" rx="168" ry="106"/>
+            <ellipse cx="500" cy="210" rx="124" ry="76"/>
+            <ellipse cx="500" cy="210" rx="82" ry="50"/>
+            <ellipse cx="500" cy="210" rx="44" ry="27"/>
+            <ellipse cx="500" cy="210" rx="18" ry="11"/>
+            <path d="M52,28 Q118,6 182,38 Q246,70 230,136 Q214,202 150,212 Q86,222 52,172 Q18,122 52,28Z"/>
+            <path d="M70,46 Q126,26 182,55 Q238,84 224,136 Q210,188 151,196 Q92,204 64,160 Q36,116 70,46Z"/>
+            <path d="M90,66 Q136,48 182,70 Q228,92 216,136 Q204,180 152,186 Q100,192 77,152 Q54,112 90,66Z"/>
+            <path d="M112,88 Q146,74 182,90 Q218,106 210,136 Q202,166 153,170 Q104,174 87,143 Q70,112 112,88Z"/>
+          </g>
+          <g fill="#191919" font-style="italic" font-family="Georgia,serif">
+            <text x="185" y="74" font-size="20" opacity="0.082">div(|∇u|&#x1D561;&#x207B;&#xB2;&#x2207;u) = &#x3BB;|u|&#x1D561;&#x207B;&#xB2;u</text>
+            <text x="52" y="340" font-size="17" opacity="0.078">(&#x2212;&#x394;)&#x02E2; u = f &#xA0;&#xA0;in &#xA0;&#x3A9; &#x2282; &#x211D;&#x1D4F;</text>
+            <text x="370" y="210" font-size="13" opacity="0.072">u &#x2208; W&#x2080;&#xB9;&#x2B9;&#x1D561;(&#x3A9;)</text>
+            <text x="185" y="390" font-size="14" opacity="0.065">&#x222B;&#x2126; |&#x2207;u|&#x1D561; dx &#x2212; &#x3BB; &#x222B;&#x2126; |u|&#x1D561; dx = 0</text>
+          </g>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#mathpat)"/>
+    </svg>
+  </div>
+
+  <!-- Home / Bio -->
     <section class="section" id="home">
-      <div class="hero" style="position:relative">
-        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible" viewBox="0 0 600 200" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-          <g opacity="0.055" fill="none" stroke="#191919" stroke-width="0.9">
-            <ellipse cx="490" cy="100" rx="175" ry="108"/>
-            <ellipse cx="490" cy="100" rx="132" ry="78"/>
-            <ellipse cx="490" cy="100" rx="90" ry="52"/>
-            <ellipse cx="490" cy="100" rx="52" ry="30"/>
-            <ellipse cx="490" cy="100" rx="22" ry="13"/>
-            <path d="M60,10 Q130,0 190,30 Q250,62 235,115 Q220,168 158,176 Q96,184 62,138 Q28,92 60,10Z"/>
-            <path d="M78,26 Q138,16 190,42 Q242,68 228,113 Q214,158 158,164 Q102,170 72,130 Q42,90 78,26Z"/>
-            <path d="M97,43 Q147,32 191,55 Q235,78 222,113 Q209,148 158,153 Q107,158 82,122 Q57,86 97,43Z"/>
-          </g>
-          <g opacity="0.058" font-style="italic" fill="#191919">
-            <text x="220" y="48" font-size="19" font-family="Georgia,serif">div(|∇u|ᵖ⁻²∇u) = λ|u|ᵖ⁻²u</text>
-            <text x="300" y="162" font-size="15" font-family="Georgia,serif">(−Δ)ˢ u = f  in  Ω ⊂ ℝᴺ</text>
-            <text x="440" y="108" font-size="13" font-family="Georgia,serif">u ∈ W₀¹'ᵖ(Ω)</text>
-          </g>
-        </svg>
-        <h1 class="hero-name" style="position:relative;z-index:1">Julián Fernández Bonder</h1>
-        <p class="hero-pos" style="position:relative;z-index:1">
+      <div class="hero">
+        <h1 class="hero-name">Julián Fernández Bonder</h1>
+        <p class="hero-pos">
           Professor · <a href="http://www.dm.uba.ar">Math Department</a>, <a href="http://www.uba.ar">Universidad de Buenos Aires</a><br>
           Principal Researcher · <a href="http://www.conicet.gov.ar">CONICET</a> at <a href="https://www.ic.fcen.uba.ar/">Instituto de Cálculo</a>
         </p>
