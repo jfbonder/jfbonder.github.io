@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teaching — Julián Fernández Bonder">
+  <title>Teaching — Julián Fernández Bonder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --ink: #191919;
+      --ink-mid: #525252;
+      --ink-light: #8a8a8a;
+      --accent: #9B4F1A;
+      --accent-pale: #F6EAE0;
+      --rule: #e3e3e3;
+      --ff-serif: 'EB Garamond', Georgia, serif;
+      --ff-sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-sans); color: var(--ink); background: var(--white); min-height: 100vh; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 224px;
+      height: 100vh;
+      padding: 2.75rem 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      overflow-y: auto;
+      background: #5C2D1E;
+      z-index: 10;
+    }
+
+    .sidebar-name {
+      font-family: var(--ff-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 0.6rem;
+      text-decoration: none;
+      display: block;
+    }
+
+    .sidebar-role { font-size: 0.7rem; color: rgba(255,255,255,0.52); line-height: 1.7; }
+
+    .sidebar-nav { display: flex; flex-direction: column; }
+
+    .sidebar-nav a {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.48);
+      text-decoration: none;
+      padding: 0.5rem 0.65rem;
+      border-left: 2px solid transparent;
+      transition: color 0.12s, border-color 0.12s;
+    }
+    .sidebar-nav a:hover { color: rgba(255,255,255,0.82); }
+    .sidebar-nav a.active {
+      color: rgba(255,255,255,0.95);
+      border-left-color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    .sidebar-links { margin-top: auto; display: flex; flex-direction: column; gap: 0.4rem; }
+    .sidebar-links a { font-size: 0.68rem; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.12s; }
+    .sidebar-links a:hover { color: rgba(255,255,255,0.72); }
+
+    /* ── Topbar (mobile) ── */
+    .topbar {
+      border-bottom: 1px solid var(--rule);
+      border-left: 4px solid #5C2D1E;
+      padding: 1.25rem 1.5rem;
+      display: none;
+      align-items: baseline;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 20;
+    }
+    .topbar-name { font-family: var(--ff-serif); font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .topbar-back { margin-left: auto; font-size: 0.75rem; color: var(--accent); text-decoration: none; }
+    .topbar-back:hover { text-decoration: underline; }
+
+    /* ── Main ── */
+    main {
+      margin-left: 224px;
+      padding: 3.5rem 3rem 6rem;
+      max-width: calc(224px + 780px);
+    }
+
+    h1 { font-family: var(--ff-serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .page-subtitle { font-size: 0.8rem; color: var(--ink-light); margin-bottom: 3rem; }
+
+    /* ── Current course ── */
+    .course-current {
+      background: var(--accent-pale);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2.5rem;
+      border-radius: 0 2px 2px 0;
+    }
+    .course-current-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+    }
+    .course-current-title { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--ink); margin-bottom: 0.25rem; }
+    .course-current-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.6; }
+    .course-current-desc a { color: var(--accent); text-decoration: none; }
+    .course-current-desc a:hover { text-decoration: underline; }
+
+    /* ── Course list ── */
+    .section { margin-bottom: 2.5rem; }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .course-list { list-style: none; }
+
+    .course-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 1.25rem;
+      padding: 0.65rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.83rem;
+      align-items: baseline;
+    }
+
+    .course-period { color: var(--ink-light); font-size: 0.75rem; }
+    .course-name { color: var(--ink); line-height: 1.5; }
+    .course-name a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    .course-name a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .course-name .links { font-size: 0.72rem; color: var(--ink-light); margin-left: 0.5rem; }
+    .course-name .links a { color: var(--accent); text-decoration: none; border: none; font-size: 0.72rem; }
+    .course-name .links a:hover { text-decoration: underline; }
+
+    /* ── Materials ── */
+    .material-list { list-style: none; }
+    .material-item {
+      padding: 0.65rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.83rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .material-item a { color: var(--accent); text-decoration: none; }
+    .material-item a:hover { text-decoration: underline; }
+    .material-item .desc { color: var(--ink-mid); font-size: 0.78rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 820px) {
+      .sidebar { display: none; }
+      .topbar { display: flex; }
+      main { margin-left: 0; padding: 2rem 1.25rem 5rem; max-width: 100%; }
+      .course-item { grid-template-columns: 90px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <a class="sidebar-name" href="index.html">Julián<br>Fernández Bonder</a>
+      <div class="sidebar-role">Professor · UBA<br>Principal Researcher · CONICET</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="teaching.html" class="active">Teaching</a>
+      <a href="index.html#research">Grants &amp; Collaborators</a>
+      <a href="index.html#students">Students</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="sidebar-links">
+      <a href="https://scholar.google.com.ar/citations?hl=es&user=N_R6gSgAAAAJ" target="_blank">Google Scholar</a>
+      <a href="https://arxiv.org/search/?searchtype=author&query=Bonder%2C+J+F" target="_blank">arXiv</a>
+      <a href="http://www.ams.org/mathscinet/search/author.html?mrauthid=653248" target="_blank">MathSciNet</a>
+      <a href="https://www.researchgate.net/profile/Julian_Fernandez_Bonder" target="_blank">ResearchGate</a>
+      <a href="https://zbmath.org/authors/fernandez-bonder.julian" target="_blank">zbMATH</a>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <a class="topbar-name" href="index.html">J. Fernández Bonder</a>
+    <a class="topbar-back" href="index.html">← Back</a>
+  </header>
+
+  <main>
+    <h1>Teaching</h1>
+    <p class="page-subtitle">Universidad de Buenos Aires · 2003–present</p>
+
+    <!-- Current -->
+    <div class="course-current">
+      <div class="course-current-label">Current · 2nd semester 2026</div>
+      <div class="course-current-title">Optimal Transport Theory</div>
+      <div class="course-current-desc">
+        Mathematical foundations of Optimal Transport Theory. Valid for the Mathematics and Data Sciences programs.<br>
+        <a href="https://cms.dm.uba.ar/academico/materias/2docuat2026/teoria_de_transporte_optimo/" target="_blank">Course website</a> · <a href="https://campus.exactas.uba.ar/course/view.php?id=1228" target="_blank">Campus virtual</a>
+      </div>
+    </div>
+
+    <!-- Lecture notes -->
+    <div class="section">
+      <div class="section-title">Lecture notes &amp; materials</div>
+      <ul class="material-list">
+        <li class="material-item">
+          <a href="http://cms.dm.uba.ar/depto/public/grado/fascgrado7.pdf" target="_blank">Partial Differential Equations</a><br>
+          <span class="desc">Lecture notes for the Mathematics Program (in Spanish). Cursos de Grado del Departamento de Matemática, Fascículo 7.</span>
+        </li>
+        <li class="material-item">
+          <a href="https://drive.google.com/file/d/1WY9QK7aCJwJMjMGBhxn5u8Z24XBUaGLf/view" target="_blank">Introduction to Continuous Modelling</a><br>
+          <span class="desc">Lecture notes for the Data Science Program (in Spanish, draft).</span>
+        </li>
+        <li class="material-item">
+          <a href="http://mate.dm.uba.ar/~jfbonder/notas_nolocal/NoLocal.pdf" target="_blank">Introduction to nonlocal equations and fractional Sobolev spaces</a><br>
+          <span class="desc">In Spanish, draft.</span>
+        </li>
+        <li class="material-item">
+          <a href="http://cms.dm.uba.ar/depto/public/fasc1.pdf" target="_blank">Explosions in Stochastic Differential Equations</a><br>
+          <span class="desc">In Spanish. Joint with <a href="http://mate.dm.uba.ar/~pgroisma">P. Groisman</a>. Cursos y Seminarios, Serie B, nro. 1.</span>
+        </li>
+        <li class="material-item">
+          <a href="https://www.youtube.com/c/An%C3%A1lisis1ExactasUBA" target="_blank">Analysis 1 — video lectures</a><br>
+          <span class="desc">YouTube channel (in Spanish).</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Past courses -->
+    <div class="section">
+      <div class="section-title">Past courses</div>
+      <ul class="course-list">
+        <li class="course-item"><span class="course-period">1st sem. 2026</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/1ercuat2026/introduccion_al_modelado_continuo" target="_blank">Introduction to Continuous Modeling</a><span class="links"> · <a href="https://campus.exactas.uba.ar/course/view.php?id=922&section=0" target="_blank">campus</a></span></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2025</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2025/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a><span class="links"> · <a href="https://campus.exactas.uba.ar/course/view.php?id=579&section=0" target="_blank">campus</a></span></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2025</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/1ercuat2025/fundamentos_matematicos_%20del_%20aprendizaje_produndo/" target="_blank">Mathematical Foundations of Deep Learning</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2024</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2024/analisis_II/" target="_blank">Analysis II</a><span class="links"> · <a href="https://campus12-24.exactas.uba.ar/course/view.php?id=4538" target="_blank">campus</a></span></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2024</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/1ercuat2024/analisis_real/" target="_blank">Real Analysis</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2023</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2023/introduccion_al_modelado_continuo/" target="_blank">Introduction to Continuous Modeling</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2023</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/1ercuat2023/ecuaciones_diferenciales_no_lienales/" target="_blank">Nonlinear PDEs</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2022</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2022/introduccion_al_modelado_continuo/" target="_blank">Introduction to Continuous Modeling</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2022</span><span class="course-name">Analysis I</span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2021</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2021/analisis_1_M/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2020</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/2docuat2020/analisis_1_M/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2020</span><span class="course-name"><a href="https://cms.dm.uba.ar/academico/materias/1ercuat2020/analisis_1_M/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2019</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2019/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a> and <a href="http://cms.dm.uba.ar/academico/materias/2docuat2019/analisis_II/" target="_blank">Analysis II</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2019</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2019/analisis_funcional/" target="_blank">Functional Analysis</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2018</span><span class="course-name"><a href="https://sites.google.com/view/nonlocal/" target="_blank">Non Local Equations and Fractional Calculus</a> (aug–sep) · Visiting professor at <a href="https://www.nottingham.edu.cn/en/index.aspx" target="_blank">UNNC</a> (oct–dec)</span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2018</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2018/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2017</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2017/matematica2/" target="_blank">Mathematics 2 (Linear Algebra for Physics)</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2017</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2017/analisis_real/" target="_blank">Real Analysis – Measure and Probability</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2016</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2016/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2016</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2016/analisis_funcional/" target="_blank">Functional Analysis</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2015</span><span class="course-name"><a href="http://mate.dm.uba.ar/~jfbonder/gamma" target="_blank">Gamma-convergence and Applications</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2015</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2015/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2014</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2014/analisis_II/" target="_blank">Analysis II</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2014</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2014/analisis_1_M/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2013</span><span class="course-name"><a href="http://mate.dm.uba.ar/~jfbonder/transporte/" target="_blank">Optimal Transportation</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2013</span><span class="course-name"><a href="http://mate.dm.uba.ar/~jfbonder/InterU/" target="_blank">Nonlinear PDEs</a> (at <a href="http://www.unsl.edu.ar/" target="_blank">UNSL</a>)</span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2012</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2012/analisis_1_M/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2012</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/1ercuat2012/ecuaciones_diferenciales/" target="_blank">Partial Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2011</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2011/problemas_de_optimizacion_de_forma" target="_blank">Shape Optimization Problems</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2011</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_2_M/2011/1/" target="_blank">Analysis II</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2010</span><span class="course-name"><a href="http://cms.dm.uba.ar/academico/materias/2docuat2010/analisis_real" target="_blank">Real Analysis – Measure and Probability</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2010</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_1_M/2010/1/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2009</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_1_M/2009/2/" target="_blank">Analysis I</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2009</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/optativas/teoria_geometrica_de_la_medida/2009/1/" target="_blank">Geometric Measure Theory</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2008</span><span class="course-name"><a href="http://cms.dm.uba.ar/materias/2doCuat2008/Ecuaciones_Diferenciales/" target="_blank">Partial Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2008</span><span class="course-name"><a href="http://cms.dm.uba.ar/materias/1erCuat2008/analisis_matematico_I_B/" target="_blank">Analysis I (B)</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2007</span><span class="course-name"><a href="http://cms.dm.uba.ar/materias/2doCuat2007/algebra_lineal/" target="_blank">Linear Algebra</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2007</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/optativas/ecuaciones_diferenciales_no_lineales/2007/1/" target="_blank">Nonlinear PDEs</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2006</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_real/2006/2/" target="_blank">Real Analysis – Measure and Probability</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2006</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_matematico_1_B/2006/1/" target="_blank">Analysis I (B)</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2005</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_2_M/2005/2/" target="_blank">Analysis II</a> and <a href="http://www.dm.uba.ar/materias/optativas/seminario_de_ecuaciones_diferenciales/2005/2/" target="_blank">Differential Equations Seminar</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2005</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/optativas/ecuaciones_diferenciales_ordinarias/2005/1/" target="_blank">Ordinary Differential Equations</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2004</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/optativas/teoria_geometrica_de_la_medida/2004/2/" target="_blank">Geometric Measure Theory</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2004</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_funcional/2004/1/" target="_blank">Functional Analysis</a></span></li>
+        <li class="course-item"><span class="course-period">2nd sem. 2003</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_2_M/2003/2/index.html" target="_blank">Analysis II</a> and <a href="http://www.dm.uba.ar/materias/optativas/ecuaciones_diferenciales_no_lineales/2003/2/" target="_blank">Nonlinear PDEs</a></span></li>
+        <li class="course-item"><span class="course-period">1st sem. 2003</span><span class="course-name"><a href="http://www.dm.uba.ar/materias/analisis_2_M/2003/1/index.html" target="_blank">Analysis II</a></span></li>
+      </ul>
+    </div>
+
+  </main>
+</body>
+</html>
