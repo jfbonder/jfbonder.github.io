@@ -273,6 +273,14 @@
       padding-top: 1px;
     }
 
+    .pub-num-dot {
+      font-style: normal;
+      color: var(--accent);
+      font-size: 1.35rem;
+      line-height: 1;
+      padding-top: 0;
+    }
+
     .pub-body { color: var(--ink); }
 
     .pub-body em { font-style: italic; }
@@ -656,58 +664,7 @@
     <section class="section" id="publications">
       <h2 class="section-title">Publications</h2>
 
-      <!-- Preprints -->
-      <div class="pub-group">
-        <div class="pub-group-title">Preprints</div>
-        <ol class="pub-list" reversed>
-          <li class="pub-item">
-            <span class="pub-num">4</span>
-            <span class="pub-body">S. Bahrouni, J. Fernández Bonder, I. Ceresa-Dussel and O. Miyagaki. Peridynamics and anisotropic fractional Sobolev spaces with variable exponents. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Sabri-et-al.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">3</span>
-            <span class="pub-body">J. Fernández Bonder and A.M. Salort. A PINNs approach for the computation of eigenvalues in elliptic problems. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/NN-eigen.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">2</span>
-            <span class="pub-body">I. Ceresa-Dussel, J. Fernández Bonder and P. Ochoa. An eigenvalue problem for a generalized polyharmonic operator in Orlicz-Sobolev spaces without the Δ₂-condition. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Eigenvalue-polyharmonic.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">1</span>
-            <span class="pub-body">J. Fernández Bonder, M. Guzman and J.F. Spedaletti. An eigenvalue problem for a nonlocal quasilinear anisotropic equation in fractional Orlicz Sobolev spaces without the Δ₂-condition. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/BonderGuzmanSpedaletti.pdf">pdf</a></span>
-          </li>
-        </ol>
-      </div>
-
-      <!-- In press -->
-      <div class="pub-group">
-        <div class="pub-group-title">In press</div>
-        <ol class="pub-list" reversed>
-          <li class="pub-item">
-            <span class="pub-num">6</span>
-            <span class="pub-body">Z. Cheng, J. Fernández Bonder and H. Mikayelyan. A non-existence result for the nonexistence reinforced membrane problem. To appear in <em>Journal of Elliptic and Parabolic Equations</em>. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/non_existence_reinforced_membrane.pdf">pdf</a></span>
-          </li>
-
-          <li class="pub-item">
-            <span class="pub-num">4</span>
-            <span class="pub-body">J. Fernández Bonder and A.M. Salort. Asymptotic behavior for anisotropic fractional energies. To appear in <em>Israel J. Math.</em> <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Bonder-Salort.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">3</span>
-            <span class="pub-body">J. Fernández Bonder and A.M. Salort. On the first eigenvalue of the generalized laplacian. To appear in <em>Michigan Math. J.</em> <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/autov-adymp.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">2</span>
-            <span class="pub-body">I. Ceresa Dussel, J. Fernández Bonder and A. Silva. A priori estimates for solutions of <em>g</em>-Laplace type problems. To appear in <em>RACSAM</em>. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/apriori.pdf">pdf</a></span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-num">1</span>
-            <span class="pub-body">I. Ceresa-Dussel, J. Fernández Bonder and A.M. Salort. Γ-convergence of energy functionals in fractional Orlicz spaces beyond the Δ₂ condition. To appear in <em>Differential Integral Equations</em>. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/CFBS.pdf">pdf</a></span>
-          </li>
-        </ol>
-      </div>
-
-      <!-- Full list link -->
+      <!-- Published papers summary -->
       <div class="pub-group">
         <div class="pub-group-title">Published papers</div>
         <p style="font-size:0.85rem; color:var(--ink-mid); line-height:1.7; margin-bottom:1rem;">
@@ -715,7 +672,7 @@
         </p>
         <div class="scholar-stats" style="margin-bottom:1rem">
             <a href="publications.html" class="scholar-stat-block">
-              <span class="scholar-stat-num">2,091</span>
+              <span class="scholar-stat-num">2,362</span>
               <span class="scholar-stat-label">citations · Google Scholar</span>
             </a>
             <div class="scholar-stat-divider"></div>
@@ -728,6 +685,55 @@
           <a href="publications.html" class="pub-fulllist-btn">Complete publication list</a>
           <a href="https://arxiv.org/search/?searchtype=author&query=Bonder%2C+J+F" target="_blank" class="pub-fulllist-btn pub-fulllist-btn--secondary">arXiv</a>
         </div>
+      </div>
+
+      <!-- Selected papers -->
+      <div class="pub-group">
+        <div class="pub-group-title">Selected papers</div>
+        <ol class="pub-list" reversed>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, A.M. Salort and H. Vivas. Interior and up to the boundary regularity for the fractional <em>g</em>-Laplacian: the convex case. <em>Nonlinear Anal.</em>, 223 (2022), Paper No. 113060. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Orlicz-regularity.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder and A.M. Salort. Fractional order Orlicz-Sobolev spaces. <em>J. Functional Anal.</em> 277 (2019), no. 2, 333–367. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/bbm2.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, N. Saintier and A. Silva. The concentration-compactness principle for fractional order Sobolev spaces in unbounded domains and applications to the generalized fractional Brezis-Nirenberg problem. <em>NoDEA</em> 25 (2018), no. 6, Art. 52. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/CCPFRACRN.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, A. Ritorto and A.M. Salort. H-convergence result for nonlocal elliptic-type problems via Tartar's method. <em>SIAM J. Math. Anal.</em>, 49 (2017), no. 4, 2387–2408. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Bonder-Ritorto-Salort.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, N. Saintier and A. Silva. On the Sobolev embedding theorem for variable exponent spaces in the critical range. <em>J. Differential Equations</em> 253 (2012), no. 5, 1604–1620. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/Bonder-Saintier-Silva.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, S. Martínez and N. Wolanski. A free boundary problem for the <em>p(x)</em>-Laplacian. <em>Nonlinear Anal. TMA.</em>, 72 (2010), 1078–1103. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/p%28x%29-20-2-09.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, J.D. Rossi and N. Wolanski. Regularity of the free boundary in an optimization problem related to the best Sobolev trace constant. <em>SIAM J. Control Optim.</em>, 44 (2005), no. 5, 1614–1635. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/bonder-sicon.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder, E. Lami Dozo and J.D. Rossi. Symmetry properties for the extremals of the Sobolev trace embedding. <em>Ann. Inst. H. Poincaré Anal. Non Linéaire</em>. 21 (2004), no. 6, 795–805. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/radial.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder and J.D. Rossi. Asymptotic behavior of the best Sobolev trace constant in expanding and contracting domains. <em>Commun. Pure Appl. Anal.</em> 1 (2002), no. 3, 359–378. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/trace6.pdf">pdf</a></span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-num pub-num-dot">·</span>
+            <span class="pub-body">J. Fernández Bonder and J.D. Rossi. Existence results for the <em>p</em>-Laplacian with nonlinear boundary conditions. <em>J. Math. Anal. Appl.</em>, 263 (2001), 195–223. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/jmaa.pdf">pdf</a></span>
+          </li>
+        </ol>
+      </div>
+
       </div>
 
       <!-- Proceedings + notes hidden in a "full" block that's actually removed -->
@@ -830,33 +836,6 @@
 
       </ol></div><!-- END HIDDEN PUBLISHED PAPERS -->
 
-      <!-- Proceedings -->
-      <div class="pub-group">
-        <div class="pub-group-title">Proceedings</div>
-        <ol class="pub-list" reversed>
-          <li class="pub-item"><span class="pub-num">2</span><span class="pub-body">J. Fernández Bonder. On the existence of extremals for the critical Sobolev immersion with variable exponents. <em>Actas del XIII Congreso "Dr. Antonio A. R. Monteiro"</em> (2013), 2014, 77–82. <a class="pub-link" href="http://inmabb.conicet.gob.ar/static/publicaciones/actas/12/11-fernandez-bonder.pdf">pdf</a></span></li>
-          <li class="pub-item"><span class="pub-num">1</span><span class="pub-body">J. Fernández Bonder, J.P. Pinasco and J.D. Rossi. Infinitely many solutions for an elliptic system with nonlinear boundary conditions. <em>Electron. J. Differential Equations</em>, Conf. 06 (2001), 141–154. <a class="pub-link" href="https://www.emis.de/journals/EJDE/conf-proc/06/f1/fernandez.pdf">pdf</a></span></li>
-        </ol>
-      </div>
-
-      <!-- Lecture notes -->
-      <div class="pub-group">
-        <div class="pub-group-title">Lecture notes</div>
-        <ol class="pub-list" reversed>
-          <li class="pub-item"><span class="pub-num">4</span><span class="pub-body">J. Fernández Bonder. Introducción al Modelado Continuo. Lecture notes for the Data Science Program, UBA. Draft version. <a class="pub-link" href="https://drive.google.com/file/d/1WY9QK7aCJwJMjMGBhxn5u8Z24XBUaGLf/view">pdf</a></span></li>
-          <li class="pub-item"><span class="pub-num">3</span><span class="pub-body">J. Fernández Bonder. Introduction to nonlocal equations and fractional Sobolev spaces (in Spanish). Draft version. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/notas_nolocal/NoLocal.pdf">pdf</a></span></li>
-          <li class="pub-item"><span class="pub-num">2</span><span class="pub-body">J. Fernández Bonder and P. Groisman. Explosiones en ecuaciones diferenciales estocásticas. <em>Cursos y Seminarios, Serie B</em>, Depto. de Matemática, Fascículo 1, 2006. <a class="pub-link" href="http://cms.dm.uba.ar/depto/public/fasc1.pdf">pdf</a></span></li>
-          <li class="pub-item"><span class="pub-num">1</span><span class="pub-body">J. Fernández Bonder. Ecuaciones Diferenciales Parciales. <em>Cursos de Grado del Departamento de Matemática</em>, Fascículo 7, 2015. <a class="pub-link" href="http://cms.dm.uba.ar/depto/public/grado/fascgrado7.pdf">pdf</a></span></li>
-        </ol>
-      </div>
-
-      <!-- Dissertation -->
-      <div class="pub-group">
-        <div class="pub-group-title">Dissertation</div>
-        <ul class="pub-list">
-          <li class="pub-item"><span class="pub-num">—</span><span class="pub-body">A free boundary problem in combustion theory. Universidad de Buenos Aires, 2002. <a class="pub-link" href="http://mate.dm.uba.ar/~jfbonder/papers/tesis.pdf">pdf</a></span></li>
-        </ul>
-      </div>
     </section>
 
     <!-- Teaching -->
@@ -1050,3 +1029,4 @@
   </script>
 </body>
 </html>
+
